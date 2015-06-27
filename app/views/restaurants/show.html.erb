@@ -25,5 +25,20 @@
   <%= @restaurant.image %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<%= link_to '編集する', edit_restaurant_path(@restaurant) %> |
+<%= link_to '一覧へ戻る', restaurants_path %> |
+<%= link_to 'レビューを書く', new_restaurant_review_path(@restaurant) %>
+
+<h2>レビュー一覧</h2>
+<% @restaurant.reviews.each do |review| %>
+  <div>
+    <%= simple_format(review.body) %>
+  </div>
+
+  <div>
+    <%= review.score %>
+  </div>
+  
+  <p>by <%= review.user.full_name %></p>
+
+<% end %>
