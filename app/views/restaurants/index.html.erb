@@ -1,39 +1,24 @@
 
 
-<h1>Listing Restaurants</h1>
+<h1>レストラン一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Tel</th>
-      <th>Address</th>
-      <th>Url</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class="table table-striped">
+<tbody>
+  <% @restaurants.each do |restaurant| %>
+  <tr>
+    <td><img src="<%= restaurant.image %>" alt="" width="100"></td>
+    <td>
+      <%= restaurant.name %>
+    </td>
+    <td>
+      <%= link_to '詳細をみる', restaurant, class: "btn btn-default" %>
+    </td>
+<!--<td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+      <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+    </div>
+  </div>
+  <% end %>
+</tbody>
 
-  <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.tel %></td>
-        <td><%= restaurant.address %></td>
-        <td>
-          <a href="<%= restaurant.url %>" target="_blank"><%= restaurant.url %></a>
-        </td>
-        <td>
-          <img src="<%= restaurant.image %>" alt="" width="100">
-        </td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
 </table>
-
-<br>
-
 <%= link_to 'New Restaurant', new_restaurant_path %>
