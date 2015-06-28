@@ -22,12 +22,11 @@
   </tr>
   <tr>
     <th>評価</th>
-    <td>
-    </td>
+    <td><%= @restaurant.reviews.average(:score) %></td>
   </tr>
 </table>
 
-<%= link_to '編集する', edit_restaurant_path(@restaurant) %> |
+<%= link_to '編集する', edit_restaurant_path(@restaurant) %>
 <%= link_to 'レビューを書く', new_restaurant_review_path(@restaurant) %>
 
 
